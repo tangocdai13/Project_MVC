@@ -8,7 +8,7 @@ class Model
 
     public function __construct()
     {
-        $this->db = new PDO("mysql:host=localhost;dbname=baitap1", 'root','');
+        $this->db = new PDO("mysql:host=localhost;dbname=leanrmysql", 'root','root');
         // $this->db->exec("set name utf8mb4");
     }
 
@@ -57,7 +57,7 @@ class Model
 
         $valueString = implode(', ', $value);
 
-        $sql = "INSERT INTO {$this->getTable()}(${columnNameString}) VALUES(${valueString})";
+        $sql = "INSERT INTO {$this->getTable()}({$columnNameString}) VALUES({$valueString})";
 
         $this->query($sql);
     }

@@ -4,6 +4,7 @@
 
 spl_autoload_register(function ($className) {
     $modelFilePath = './Models/' . $className . '.php';
+
     $controllerFilePath = './Controllers/' . $className . '.php';
 
     if (file_exists($modelFilePath)) {

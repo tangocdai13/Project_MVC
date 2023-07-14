@@ -32,13 +32,12 @@ class FamilyController
         // Validate date
         $errorMessage = $this->validate();
 
-
-
         if (empty($errorMessage)) {
             // Insert to database
             $this->model->create([
-                'family_name' => $inputs['family_name'],
+                'name' => $inputs['name'],
                 'address' => $inputs['address'],
+                'phone' => $inputs['phone'],
             ]);
 
             return redirect('index.php?controller=family');
@@ -67,6 +66,8 @@ class FamilyController
 
     public function update()
     {
+        $inputs = $_POST;
+
         $familyId = $_GET['id'] ?? 0;
 
         $family = $this->model->findById($_GET['id'] ?? 0);
@@ -81,8 +82,9 @@ class FamilyController
         if (empty($errorMessage)) {
             // Update to database
             $this->model->update([
-                'family_name' => $inputs['family_name'],
+                'name' => $inputs['name'],
                 'address' => $inputs['address'],
+                'phone' => $inputs['phone']
             ], $familyId);
 
             return redirect('index.php?controller=family');
@@ -108,9 +110,15 @@ class FamilyController
         // Validate data
         $errorMessage = [];
 
-        if (empty($inputs['family_name'])) {
-            $errorMessage['family_name'] = 'Family_name is require';
+        if (empty($inputs['name'])) {
+            $errorMessage['name'] = 'name is required';
         }
+        if (empty($inputs['address'])) {
+            $errorMessage['address'] = 'address is required';
+        }
+        if (empty($inputs['phone'])) {
+            $errorMessage['phone'] = 'phone is required';
+         }
 
         return $errorMessage;
     }

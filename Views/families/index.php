@@ -6,13 +6,15 @@
         <th>ID</th>
         <th>Name</th>
         <th>Address</th>
+        <th>Phone</th>
         <th>Action</th>
     </tr>
     <?php foreach ($families as $family): ?>
     <tr>
         <td><?= $family->id ?></td>
-        <td><?= $family->family_name ?></td>
+        <td><?= $family->name ?></td>
         <td><?= $family->address ?></td>
+        <td><?= $family->phone ?></td>
         <td>
             <a href="index.php?controller=family&action=edit&id=<?= $family->id ?>">Sửa</a> |
             <a onclick="return confirm('bạn có thực sự muốn xóa không?')" href="index.php?controller=family&action=delete&id=<?= $family->id ?>">Xóa</a>
